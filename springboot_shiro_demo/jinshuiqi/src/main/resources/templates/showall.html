@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>显示用户信息</title>
+</head>
+<body>
+    <table border="1" width="980">
+        <tr>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>用户密码</th>
+            <th>用户手机</th>
+            <th>用户地址</th>
+            <th>首装时间</th>
+            <th>下次维护</th>
+            <th>管理操作</th>
+        </tr>
+        <!--将后台传出的 users的分页集合list进行迭代，用user参数接收，通过user访问属性值-->
+        <tr th:each="user:${userList}" align="center">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.userpwd}"></td>
+            <td th:text="${user.usermobile}"></td>
+            <td th:text="${user.useraddr}"></td>
+
+            <!--<td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
+            <td th:text="${#dates.format(user.userfirstinstall,'yyyy-MM-dd')}" width="90"></td>
+            <td th:text="${#dates.format(user.usernextservice,'yyyy-MM-dd')}" width="90">></td>
+            <td width="150"> <a th:href="@{'/checkid?id='+*{user.id}}">修改</a> |<a th:href="@{'/delbyid?id='+*{user.id}}">删除</a></td>
+        </tr>
+    </table>
+
+    <hr/>
+    <!--总页数 <p th:text="*{totalPages-1}"></p>-->
+    <!--总记录数 <p th:text="*{totalElements}"></p>-->
+    <!--<hr/>-->
+    <!--当前页 <a th:href="@{/listall?page=0}">当前页</a><br/>-->
+    <!--下一页 <a th:href="@{/listall?page=1}">下一页</a>-->
+    <div width="80%" align="center"  bgcolor="#EFFBFE">
+        <div align="center" bgcolor="#EFFBFE">
+            <a th:href="@{/listall?page=0}">首页</a>
+            <a th:href="@{'/listall?page='+*{page-1}}">上一页</a>
+            <a th:href="@{'/listall?page='+*{page+1}}">下一页</a>
+            <a th:href="@{'/listall?page='+*{rspages}}">最后一页</a>
+        </div>
+    </div>
+
+
+    <hr/>
+
+
+</body>
+</html>

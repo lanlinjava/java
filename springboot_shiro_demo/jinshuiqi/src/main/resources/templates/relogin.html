@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆失败提示页面</title>
+</head>
+<body>
+<h1>登陆失败提示页面</h1>
+<h3 th:text="${msg}"></h3>
+<script th:inline="javascript">
+    var message = [[${msg}]];
+    alert(message);
+    location.href="/login.html";
+</script>
+</body>
+</html>

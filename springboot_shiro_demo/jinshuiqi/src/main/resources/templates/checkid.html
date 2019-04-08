@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>显示用户信息</title>
+</head>
+<body>
+    <form action="update" method="post">
+
+        <table border="2" width="900">
+            <tr>
+                <th>用户信息</th>
+                <th>用户名</th>
+                <th>用户密码</th>
+                <th>用户手机</th>
+                <th>用户地址</th>
+                <th>首装时间</th>
+                <th>下次维护</th>
+            </tr>
+            <tr>
+                <input type="text" th:value="*{user.id}" name="id"/>
+                <td>修改用户信息</td>
+
+                <td><input type="text" name="username" th:value="*{user.username}"/></td>
+                <td><input type="text" name="userpwd" th:value="*{user.userpwd}"/></td>
+                <td><input type="text" name="usermobile" th:value="*{user.usermobile}"/></td>
+                <td><input type="text" name="useraddr" th:value="*{user.useraddr}"/></td>
+                <td><input type="date" name="userfirstinstall" th:value="*{user.userfirstinstall}"/></td>
+                <td><input type="date" name="usernextservice" th:value="*{user.usernextservice}"/></td>
+            </tr>
+        </table>
+
+        <br/>
+        <div>用户备注信息</div>
+        <hr />
+        <textarea name="userinforemark" rows="20" cols="100" th:text="${user.userinforemark}"></textarea>
+        <hr />
+        <input type="submit" value="提交修改">
+    </form>
+
+
+
+</body>
+</html>

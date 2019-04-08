@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>显示用户信息</title>
+</head>
+<body>
+    <table border="2" width="900">
+        <tr>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>用户密码</th>
+            <th>用户手机</th>
+            <th>用户地址</th>
+            <th>首装时间</th>
+            <th>下次维护</th>
+            <th>管理操作</th>
+        </tr>
+        <tr>
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.username}"></td>
+            <td th:text="${u.userpwd}"></td>
+            <td th:text="${u.usermobile}"></td>
+            <td th:text="${u.useraddr}"></td>
+            <td th:text="${u.userfirstinstall}"></td>
+            <td th:text="${u.usernextservice}"></td>
+            <td><a href="#">更新</a> <a href="">删除</a></td>
+        </tr>
+    </table>
+    <div>用户备注信息</div>
+    <hr/>
+    <div th:utext="${u.userinforemark}"></div>
+    <hr/>
+
+
+</body>
+</html>
